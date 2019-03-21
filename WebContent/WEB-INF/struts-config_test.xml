@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+<struts-config>
+
+	<!-- 객체생성 -->
+	<form-beans>
+		<form-bean name="testForm" type="com.test.TestForm"/>
+	</form-beans>
+	
+	<!-- /test.do가 올 경우 write.jsp로 가라 -->
+	<action-mappings>
+		<action path="/test" forward="/test/write.jsp"/>
+		<action path="/test_ok" type="com.test.TestAction"
+		name="testForm" scope="request">
+			<!-- /test_ok가 올 경우 testForm 객체 클래스를 가지고 TestAction으로 가라 -->
+			<forward name="ok" path="/test/write_ok.jsp" />
+			<forward name="error" path="/test/error.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>          

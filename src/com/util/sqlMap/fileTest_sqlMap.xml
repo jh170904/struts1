@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- Mapper -->
+<sqlMap namespace="fileTest">
+
+<select id="maxNum" resultClass="Integer">
+	select nvl(max(num),0) from fileTest
+</select>
+
+<!-- 컬럼명이 데이터베이스에 있는 컬럼명과 dto 클래스에 있는 변수명과 상이할 경우 
+parameterMap="" 속성을 사용한다. 실제로는 많이 사용하지 않음 -->
+<insert id="insertData" parameterClass="com.fileTest.FileTestForm" >
+	insert into fileTest (num,subject,saveFileName,originalFileName) 
+	 values (#num#,#subject#,#saveFileName#,#originalFileName#)
+</insert>
+
+<!-- 페이징 작업을 위해 where조건 반영 -->
+<select id="listData" resultClass="com.fileTest.FileTestForm" parameterClass="map">
+<![CDATA[
+	select * from(
+	select rownum rnum, data.* from(
+	select num,subject,saveFileName,originalFileName 
+	from fileTest order by num desc) data)
+	where rnum>=#start# and rnum<=#end# 
+]]> 
+</select>
+
+<!-- 다운로드시 -->
+<select id="readData" resultClass="com.fileTest.FileTestForm"
+parameterClass="int">
+	select num,subject,saveFileName,originalFileName  
+	from fileTest where num=#num#
+</select>
+
+<!-- 게시물 카운팅 -->
+<select id="dataCount" resultClass="int">
+	select nvl(count(num),0) from fileTest
+</select>
+
+<!-- 삭제 -->
+<delete id="deleteData" parameterClass="int">
+	delete fileTest where num=#num#
+</delete>
+
+</sqlMap>

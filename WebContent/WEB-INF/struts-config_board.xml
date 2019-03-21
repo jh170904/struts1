@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+<struts-config>
+
+	<form-beans>
+		<form-bean name="boardForm" type="com.board.BoardForm"/>
+	</form-beans>
+
+	<action-mappings>
+	
+		<!-- 별칭 설정 가능 -->
+		<!-- http://192.168.16.16:8080/struts1/boardList.do 요청시 리스트페이지 조회 -->
+		<action path="/boardList" forward="/board.do?method=list"/>
+		
+		<!-- /board.do가 오면 BoardAction 클래스로 가라. -->
+		<!-- parameter는 변수. 찾아가야하는 메소드명을 기재 -->
+		<action path="/board" type="com.board.BoardAction"
+		name="boardForm" scope="request" parameter="method">
+			
+			<!-- 컨트롤러의 역할. 분배기 -->
+			<forward name="created" path="/board/created.jsp"/>
+			<!-- save일 경우 리다이렉트 진행 -->
+			<forward name="save" redirect="true" path="/board.do?method=list"/>
+			<forward name="list" path="/board/list.jsp"/>
+			<forward name="article" path="/board/article.jsp"/>
+			<forward name="updated" path="/board/updated.jsp"/>
+			
+		</action> 
+	</action-mappings>
+
+</struts-config>          
