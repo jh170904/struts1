@@ -24,5 +24,6 @@ PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
 	<!-- 이 sqlMap은 struts에서 struts-config_temp.xml를 만들어두고 복사해서 사용한것과 동일 -->
 	<sqlMap resource="com/util/sqlMap/boardTest_sqlMap.xml"/>
 	<sqlMap resource="com/util/sqlMap/fileTest_sqlMap.xml"/>
+	<sqlMap resource="com/util/sqlMap/member_sqlMap.xml"/>
 	
 </sqlMapConfig>
