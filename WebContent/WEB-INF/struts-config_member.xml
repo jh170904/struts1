@@ -17,7 +17,8 @@
 			<forward name="created" path="/member/created.jsp"/>
 			<forward name="created_ok" redirect="true" path="/join.do?method=login"/>
 			<forward name="login" path="/member/login.jsp"/>
-			<forward name="login_ok" path="/boardTest.do?method=list"/>
+			<forward name="login_ok" redirect="true" path="/boardTest.do?method=list"/>
+			<forward name="logout_ok" redirect="true" path="/boardTest.do?method=list"/>
 			<forward name="searchpw" path="/member/searchpw.jsp"/>
 		</action> 
 	</action-mappings>

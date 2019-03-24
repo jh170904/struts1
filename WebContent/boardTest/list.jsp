@@ -29,6 +29,11 @@
 		게 시 판(Struts1 + iBatis)
 	</div>
 	<div id="bbsList_header">
+		<div>
+			<c:if test="${!empty sessionScope.MemberForm.userName }">
+			${sessionScope.MemberForm.userName }님 반갑습니다 ! 
+			</c:if>
+		</div>
 		<div id="leftHeader">
 			<form action="" name="searchForm" method="post">
 				<select name="searchKey" class="selectField">
@@ -42,6 +47,14 @@
 		</div>
 		
 		<div id="rightHeader">
+			<c:if test="${!empty sessionScope.MemberForm.userName }">
+				<input type="button" value="로그아웃" class="btn2" 
+				onclick="javascript:location.href='<%=cp%>/join.do?method=logout';"/>
+			</c:if>
+			<c:if test="${empty sessionScope.MemberForm.userName }">
+				<input type="button" value="로그인" class="btn2" 
+				onclick="javascript:location.href='<%=cp%>/join.do?method=login';"/>
+			</c:if>
 			<input type="button" value=" 글올리기 " class="btn2" 
 			onclick="javascript:location.href='<%=cp%>/boardTest.do?method=created${params}';"/>
 		</div>

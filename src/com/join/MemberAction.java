@@ -117,5 +117,16 @@ public class MemberAction extends DispatchAction{
 			return mapping.findForward("searchpw");
 		}
 	}
+	
+	//·Î±×¾Æ¿ô½Ã
+	public ActionForward logout(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("MemberForm");
+		session.invalidate();
+		
+		return mapping.findForward("logout_ok");
+	}	
 
 }
