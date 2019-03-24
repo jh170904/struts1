@@ -22,6 +22,7 @@
   				/WEB-INF/struts-config_boardTest.xml,
   				/WEB-INF/struts-config_fileTest.xml,
   				/WEB-INF/struts-config_member.xml,
+  				/WEB-INF/struts-config_image.xml
   		</param-value>
   	</init-param>
   	<load-on-startup>2</load-on-startup>

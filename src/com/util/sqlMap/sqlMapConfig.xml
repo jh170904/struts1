@@ -25,5 +25,6 @@ PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
 	<sqlMap resource="com/util/sqlMap/boardTest_sqlMap.xml"/>
 	<sqlMap resource="com/util/sqlMap/fileTest_sqlMap.xml"/>
 	<sqlMap resource="com/util/sqlMap/member_sqlMap.xml"/>
+	<sqlMap resource="com/util/sqlMap/image_sqlMap.xml"/>
 	
 </sqlMapConfig>
